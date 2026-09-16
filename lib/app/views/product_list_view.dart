@@ -15,14 +15,55 @@ class ProductListView extends GetView<ProductListController> {
         title: const Text('Products'),
         actions: [
           IconButton(
+            icon: const Icon(Icons.sort),
+            onPressed: () {
+              Get.bottomSheet(
+                Container(
+                  color: Colors.white,
+                  child: SafeArea(
+                    child: Wrap(
+                      children: [
+                        ListTile(
+                          leading: const Icon(Icons.arrow_upward),
+                          title: const Text('Sort A-Z (Demo)'),
+                          onTap: () {
+                            Get.back();
+                            Get.snackbar('Sort', 'Sorting feature coming soon');
+                          },
+                        ),
+                        ListTile(
+                          leading: const Icon(Icons.arrow_downward),
+                          title: const Text('Sort Z-A (Demo)'),
+                          onTap: () {
+                            Get.back();
+                            Get.snackbar('Sort', 'Sorting feature coming soon');
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.favorite),
             onPressed: () => Get.toNamed(Routes.FAVORITES),
           ),
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              Get.find<SessionService>().logout();
-              Get.offAllNamed(Routes.LOGIN);
+              Get.defaultDialog(
+                title: 'Confirm Logout',
+                middleText: 'Are you sure you want to log out?',
+                textConfirm: 'Yes',
+                textCancel: 'No',
+                confirmTextColor: Colors.white,
+                onConfirm: () {
+                  Get.find<SessionService>().logout();
+                  Get.offAllNamed(Routes.LOGIN);
+                },
+              );
             },
           )
         ],
