@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
 import '../data/models/product_model.dart';
+import '../services/favorites_service.dart';
 
 class ProductDetailController extends GetxController {
   final Dio _dio = Dio();
@@ -43,10 +44,13 @@ class ProductDetailController extends GetxController {
   }
 
   void toggleFavorite() {
-    // We will persist this in PR 10 with GetStorage
+    if (product.value == null) return;
+    final favService = Get.find<FavoritesService>();
+    favService.toggleFavorite(product.value!);
+    final isFav = favService.isFavorite(product.value!.id);
     Get.snackbar(
-      'Added to Favorites',
-      '${product.value?.title ?? "Product"} added to favorites!',
+      isFav ? 'Added to Favorites' : 'Removed from Favorites',
+      '${product.value?.title} was ${isFav ? "added to" : "removed from"} favorites!',
       snackPosition: SnackPosition.BOTTOM,
     );
   }

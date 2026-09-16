@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'app/routes/app_pages.dart';
 import 'app/services/session_service.dart';
+import 'app/services/favorites_service.dart';
 
 Future<void> initServices() async {
   print('Starting services...');
+  if (!Get.testMode) {
+    await GetStorage.init();
+  }
   await Get.putAsync(() => SessionService().init());
+  await Get.putAsync(() => FavoritesService().init());
   print('All services started...');
 }
 
