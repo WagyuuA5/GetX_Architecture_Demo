@@ -9,7 +9,7 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(title: Text('login'.tr)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
@@ -21,13 +21,13 @@ class LoginView extends GetView<LoginController> {
                 children: [
                   TextFormField(
                     controller: controller.emailController,
-                    decoration: const InputDecoration(labelText: 'Email', border: OutlineInputBorder()),
+                    decoration: InputDecoration(labelText: 'email'.tr, border: const OutlineInputBorder()),
                     validator: (val) => val == null || val.isEmpty ? 'Please enter email' : null,
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
                     controller: controller.passwordController,
-                    decoration: const InputDecoration(labelText: 'Password', border: OutlineInputBorder()),
+                    decoration: InputDecoration(labelText: 'password'.tr, border: const OutlineInputBorder()),
                     obscureText: true,
                     validator: (val) => val == null || val.isEmpty ? 'Please enter password' : null,
                   ),
@@ -51,7 +51,7 @@ class LoginView extends GetView<LoginController> {
                     }
                     return ElevatedButton(
                       onPressed: controller.login,
-                      child: const Text('Login'),
+                      child: Text('login'.tr),
                     );
                   }),
                   const SizedBox(height: 32),

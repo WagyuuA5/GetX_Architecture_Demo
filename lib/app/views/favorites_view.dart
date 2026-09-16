@@ -9,7 +9,7 @@ class FavoritesView extends GetView<FavoritesController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Favorites')),
+      appBar: AppBar(title: Text('favorites'.tr)),
       body: Obx(() {
         final favorites = controller.favorites;
         

@@ -12,8 +12,19 @@ class ProductListView extends GetView<ProductListController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Products'),
+        title: Text('products'.tr),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.language),
+            tooltip: 'change_language'.tr,
+            onPressed: () {
+              if (Get.locale?.languageCode == 'id') {
+                Get.updateLocale(const Locale('en', 'US'));
+              } else {
+                Get.updateLocale(const Locale('id', 'ID'));
+              }
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.sort),
             onPressed: () {
@@ -54,10 +65,10 @@ class ProductListView extends GetView<ProductListController> {
             icon: const Icon(Icons.logout),
             onPressed: () {
               Get.defaultDialog(
-                title: 'Confirm Logout',
-                middleText: 'Are you sure you want to log out?',
-                textConfirm: 'Yes',
-                textCancel: 'No',
+                title: 'logout'.tr,
+                middleText: 'confirm_logout'.tr,
+                textConfirm: 'yes'.tr,
+                textCancel: 'no'.tr,
                 confirmTextColor: Colors.white,
                 onConfirm: () {
                   Get.find<SessionService>().logout();
