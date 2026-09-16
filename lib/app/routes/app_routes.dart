@@ -8,6 +8,7 @@ abstract class Routes {
   static const PRODUCT_DETAIL = _Paths.PRODUCTS + _Paths.PRODUCT_DETAIL;
   static const FAVORITES = _Paths.PRODUCTS + _Paths.FAVORITES; 
   static const PLAYGROUND = _Paths.PLAYGROUND;
+  static const STATE_MANAGEMENT = _Paths.STATE_MANAGEMENT;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const PRODUCT_DETAIL = '/detail'; 
   static const FAVORITES = '/favorites'; 
   static const PLAYGROUND = '/playground';
+  static const STATE_MANAGEMENT = '/state-management';
 }

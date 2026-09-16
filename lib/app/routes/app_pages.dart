@@ -5,11 +5,15 @@ import '../views/product_list_view.dart';
 import '../views/product_detail_view.dart';
 import '../views/favorites_view.dart';
 import '../views/bindings_playground_view.dart';
+import '../views/reactive_vs_getbuilder_view.dart';
+
 import '../bindings/login_binding.dart';
 import '../bindings/product_list_binding.dart';
 import '../bindings/product_detail_binding.dart';
 import '../bindings/favorites_binding.dart';
 import '../bindings/bindings_playground_binding.dart';
+import '../bindings/reactive_vs_getbuilder_binding.dart';
+
 import 'auth_middleware.dart';
 
 part 'app_routes.dart';
@@ -30,6 +34,11 @@ class AppPages {
       name: _Paths.PLAYGROUND,
       page: () => const BindingsPlaygroundView(),
       binding: BindingsPlaygroundBinding(),
+    ),
+    GetPage(
+      name: _Paths.STATE_MANAGEMENT,
+      page: () => const ReactiveVsGetBuilderView(),
+      binding: ReactiveVsGetBuilderBinding(),
     ),
     GetPage(
       name: _Paths.PRODUCTS,

@@ -22,6 +22,11 @@ class LoginView extends StatelessWidget {
               onPressed: () => Get.toNamed(Routes.PLAYGROUND),
               child: const Text('Go to Bindings Playground'),
             ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () => Get.toNamed(Routes.STATE_MANAGEMENT),
+              child: const Text('Go to Reactive vs GetBuilder'),
+            ),
           ],
         ),
       ),
