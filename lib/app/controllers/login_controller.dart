@@ -32,6 +32,13 @@ class LoginController extends GetxController {
       if (emailController.text == 'admin@test.com' && passwordController.text == 'password') {
         final session = Get.find<SessionService>();
         session.login();
+        Get.snackbar(
+          'Login Success',
+          'Welcome back, Admin!',
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Colors.green,
+          colorText: Colors.white,
+        );
         Get.offAllNamed(Routes.PRODUCTS);
       } else {
         errorMessage.value = 'Invalid email or password. Use admin@test.com / password';
