@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/product_detail_controller.dart';
+import '../services/favorites_service.dart';
 
 class ProductDetailView extends GetView<ProductDetailController> {
   const ProductDetailView({Key? key}) : super(key: key);
@@ -11,14 +12,22 @@ class ProductDetailView extends GetView<ProductDetailController> {
       appBar: AppBar(
         title: const Text('Product Detail'),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.favorite_border),
-            onPressed: () {
-              if (controller.product.value != null) {
-                controller.toggleFavorite();
-              }
-            },
-          )
+          Obx(() {
+            final isFav = controller.product.value != null 
+                ? Get.find<FavoritesService>().isFavorite(controller.product.value!.id)
+                : false;
+            return IconButton(
+              icon: Icon(
+                isFav ? Icons.favorite : Icons.favorite_border,
+                color: isFav ? Colors.red : null,
+              ),
+              onPressed: () {
+                if (controller.product.value != null) {
+                  controller.toggleFavorite();
+                }
+              },
+            );
+          })
         ],
       ),
       body: Obx(() {
@@ -84,14 +93,19 @@ class ProductDetailView extends GetView<ProductDetailController> {
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: ElevatedButton.icon(
-            onPressed: controller.toggleFavorite,
-            icon: const Icon(Icons.favorite),
-            label: const Text('Add to Favorites'),
-            style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-            ),
-          ),
+          child: Obx(() {
+            final isFav = controller.product.value != null 
+                ? Get.find<FavoritesService>().isFavorite(controller.product.value!.id)
+                : false;
+            return ElevatedButton.icon(
+              onPressed: controller.toggleFavorite,
+              icon: Icon(isFav ? Icons.favorite : Icons.favorite_border),
+              label: Text(isFav ? 'Remove from Favorites' : 'Add to Favorites'),
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+              ),
+            );
+          }),
         ),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../routes/app_pages.dart';
 import '../controllers/product_list_controller.dart';
 import '../services/session_service.dart';
+import '../services/favorites_service.dart';
 
 class ProductListView extends GetView<ProductListController> {
   const ProductListView({Key? key}) : super(key: key);
@@ -73,7 +74,16 @@ class ProductListView extends GetView<ProductListController> {
                     overflow: TextOverflow.ellipsis,
                   ),
                   subtitle: Text('\$${product.price.toStringAsFixed(2)}'),
-                  trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                  trailing: Obx(() {
+                    final isFav = Get.find<FavoritesService>().isFavorite(product.id);
+                    return IconButton(
+                      icon: Icon(
+                        isFav ? Icons.favorite : Icons.favorite_border,
+                        color: isFav ? Colors.red : null,
+                      ),
+                      onPressed: () => Get.find<FavoritesService>().toggleFavorite(product),
+                    );
+                  }),
                   onTap: () => Get.toNamed(
                     Routes.PRODUCT_DETAIL, 
                     arguments: {'id': product.id, 'title': product.title},
