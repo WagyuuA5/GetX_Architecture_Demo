@@ -10,9 +10,19 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Login')),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () => Get.offNamed(Routes.PRODUCTS),
-          child: const Text('Go to Products'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () => Get.offNamed(Routes.PRODUCTS),
+              child: const Text('Go to Products (Protected)'),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () => Get.toNamed(Routes.PLAYGROUND),
+              child: const Text('Go to Bindings Playground'),
+            ),
+          ],
         ),
       ),
     );
