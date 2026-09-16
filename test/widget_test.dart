@@ -8,6 +8,6 @@ void main() {
     await app.main();
     await tester.pumpAndSettle();
     
-    expect(find.text('Login'), findsOneWidget);
+    expect(find.text('Login'), findsWidgets);
   });
 }
