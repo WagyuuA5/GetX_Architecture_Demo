@@ -4,7 +4,7 @@ import '../data/models/product_model.dart';
 import 'dart:convert';
 
 class FavoritesService extends GetxService {
-  final _box = GetStorage();
+  late final GetStorage _box;
   final String _key = 'favorites';
   
   // Observable map: productId -> Product
@@ -12,6 +12,7 @@ class FavoritesService extends GetxService {
 
   Future<FavoritesService> init() async {
     if (Get.testMode) return this;
+    _box = GetStorage();
     final String? data = _box.read(_key);
     if (data != null && data.isNotEmpty) {
       try {
