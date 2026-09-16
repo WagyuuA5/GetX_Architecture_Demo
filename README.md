@@ -2,7 +2,7 @@
 
 A comprehensive Flutter boilerplate and demonstration project utilizing [GetX](https://pub.dev/packages/get) for state management, routing, dependency injection, and more. This repository serves as a reference architecture for building scalable and maintainable Flutter applications with GetX.
 
-## 🚀 Features Demonstrated
+##  Features Demonstrated
 
 - **Route Management**: Named routes, navigation, and structured `app_pages.dart` / `app_routes.dart`.
 - **Dependency Injection**: Bindings for separate lifecycles (`Get.lazyPut`, `Get.put`, `Get.putAsync`).
@@ -16,7 +16,7 @@ A comprehensive Flutter boilerplate and demonstration project utilizing [GetX](h
 - **Unit Testing**: Controller tests bypassing UI logic with `Get.testMode`.
 - **CI/CD**: GitHub Actions workflow for automated testing and linting.
 
-## 📂 Folder Structure
+##  Folder Structure
 
 This project follows a modular, feature-by-layer structure, heavily inspired by the official GetX CLI pattern:
 
@@ -36,7 +36,7 @@ lib/
 └── main.dart           # App entry point & initialization
 ```
 
-## 🛠 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -61,7 +61,7 @@ Ensure you have the latest stable version of Flutter installed.
    flutter run
    ```
 
-## 🧪 Testing
+##  Testing
 
 To run the automated controller unit tests and widget tests locally:
 
@@ -69,13 +69,13 @@ To run the automated controller unit tests and widget tests locally:
 flutter test
 ```
 
-## 🛡 CI / CD
+##  CI / CD
 
 This repository is equipped with GitHub Actions. On every push or pull request to the `main` branch, the workflow will automatically:
 1. Setup Flutter
 2. Run `flutter analyze`
 3. Run `flutter test`
 
-## 👥 Contributing
+## Contributing
 
 Feel free to fork this project and submit pull requests if you want to add more GetX advanced use cases!
