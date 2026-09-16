@@ -7,12 +7,14 @@ abstract class Routes {
   static const PRODUCTS = _Paths.PRODUCTS;
   static const PRODUCT_DETAIL = _Paths.PRODUCTS + _Paths.PRODUCT_DETAIL;
   static const FAVORITES = _Paths.PRODUCTS + _Paths.FAVORITES; 
+  static const PLAYGROUND = _Paths.PLAYGROUND;
 }
 
 abstract class _Paths {
   _Paths._();
   static const LOGIN = '/login';
   static const PRODUCTS = '/products';
-  static const PRODUCT_DETAIL = '/detail'; // Nested
-  static const FAVORITES = '/favorites'; // Nested
+  static const PRODUCT_DETAIL = '/detail'; 
+  static const FAVORITES = '/favorites'; 
+  static const PLAYGROUND = '/playground';
 }
