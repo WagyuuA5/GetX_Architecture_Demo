@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'app_pages.dart';
+import '../services/session_service.dart';
 
 class AuthMiddleware extends GetMiddleware {
-  // Temporary flag for authentication status.
-  // Will be replaced by SessionService in PR 6.
-  bool isAuthenticated = false;
-
   @override
   RouteSettings? redirect(String? route) {
-    if (!isAuthenticated) {
+    // Get the SessionService that is guaranteed to be initialized before runApp
+    final session = Get.find<SessionService>();
+
+    if (!session.isAuthenticated) {
       return const RouteSettings(name: Routes.LOGIN);
     }
     return null;
